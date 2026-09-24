@@ -34,8 +34,8 @@ prompt = f"""
 請直接輸出純 HTML 程式碼，絕對不要在頭尾包裹 ```html 或 ``` 等任何 markdown 標籤。
 """
 
-# 3. 呼叫模型並內建重試與備援機制
-models_to_try = ["gemini-2.5-flash", "gemini-2.5-pro"]
+# 3. 使用 Google 官方指定的現行模型與備援模型
+models_to_try = ["gemini-3.6-flash", "gemini-3.1-pro-preview"]
 response = None
 
 for model_name in models_to_try:
@@ -47,20 +47,21 @@ for model_name in models_to_try:
                 contents=prompt,
             )
             if response and response.text:
+                print(f"✅ 成功透過 {model_name} 生成 HTML！")
                 break
         except ServerError as e:
             print(f"遇到伺服器忙碌 (503)，等待 5 秒後重試: {e}")
             time.sleep(5)
         except Exception as e:
-            print(f"發生未預期錯誤: {e}")
+            print(f"調用 {model_name} 發生錯誤: {e}")
             break
     if response and response.text:
         break
 
 if not response or not response.text:
-    raise RuntimeError("所有模型嘗試皆失敗或處於過載狀態，請稍候重試。")
+    raise RuntimeError("所有模型嘗試皆失敗，請確認 API Key 與權限設定。")
 
-# 4. 清理並輸出 index.html
+# 4. 清理並寫入 index.html
 html_content = response.text.replace("```html", "").replace("```", "").strip()
 
 with open("index.html", "w", encoding="utf-8") as f:

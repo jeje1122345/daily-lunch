@@ -2,15 +2,17 @@ import os
 from datetime import datetime
 from google import genai
 
+# 1. 讀取 GitHub Secret 設定的 API Key
 api_key = os.environ.get("GEMINI_API_KEY")
 if not api_key:
     raise ValueError("找不到 GEMINI_API_KEY 環境變數！")
 
-# 使用官方最新 SDK 初始化 Client
+# 2. 使用官方最新 SDK 初始化 Client
 client = genai.Client(api_key=api_key)
 
 today_str = datetime.now().strftime("%Y/%m/%d")
 
+# 3. 定版日系明亮元氣食通信 Prompt
 prompt = f"""
 你是「公司餐點分析網」，請使用「日系明亮元氣食通信」模板，將今日（{today_str}）午餐清單製作成完整的單一 HTML 網頁。
 
@@ -32,14 +34,16 @@ prompt = f"""
 請直接輸出純 HTML 程式碼，絕對不要在頭尾包裹 ```html 或 ``` 等任何 markdown 標籤。
 """
 
-# 使用最新穩定版 gemini-2.5-flash
+# 4. 呼叫 gemini-3.6-flash 生成內容
 response = client.models.generate_content(
-    model="gemini-2.5-flash",
+    model="gemini-3.6-flash",
     contents=prompt,
 )
 
+# 清理輸出並去除前後標籤
 html_content = response.text.replace("```html", "").replace("```", "").strip()
 
+# 寫入 index.html
 with open("index.html", "w", encoding="utf-8") as f:
     f.write(html_content)
 

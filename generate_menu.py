@@ -1,13 +1,13 @@
 import os
 from datetime import datetime
-import google.generativeai as genai
+from google import genai
 
 api_key = os.environ.get("GEMINI_API_KEY")
 if not api_key:
     raise ValueError("找不到 GEMINI_API_KEY 環境變數！")
 
-genai.configure(api_key=api_key)
-model = genai.GenerativeModel("gemini-1.5-flash")
+# 使用官方最新 SDK 初始化 Client
+client = genai.Client(api_key=api_key)
 
 today_str = datetime.now().strftime("%Y/%m/%d")
 
@@ -32,7 +32,12 @@ prompt = f"""
 請直接輸出純 HTML 程式碼，絕對不要在頭尾包裹 ```html 或 ``` 等任何 markdown 標籤。
 """
 
-response = model.generate_content(prompt)
+# 使用最新穩定版 gemini-2.5-flash
+response = client.models.generate_content(
+    model="gemini-2.5-flash",
+    contents=prompt,
+)
+
 html_content = response.text.replace("```html", "").replace("```", "").strip()
 
 with open("index.html", "w", encoding="utf-8") as f:

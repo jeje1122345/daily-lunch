@@ -1,18 +1,18 @@
 import os
+import time
 from datetime import datetime
 from google import genai
+from google.genai.errors import ServerError
 
-# 1. 讀取 GitHub Secret 設定的 API Key
+# 1. 讀取 API Key
 api_key = os.environ.get("GEMINI_API_KEY")
 if not api_key:
     raise ValueError("找不到 GEMINI_API_KEY 環境變數！")
 
-# 2. 使用官方最新 SDK 初始化 Client
 client = genai.Client(api_key=api_key)
-
 today_str = datetime.now().strftime("%Y/%m/%d")
 
-# 3. 定版日系明亮元氣食通信 Prompt
+# 2. 定版日系明亮元氣食通信 Prompt
 prompt = f"""
 你是「公司餐點分析網」，請使用「日系明亮元氣食通信」模板，將今日（{today_str}）午餐清單製作成完整的單一 HTML 網頁。
 
@@ -34,16 +34,35 @@ prompt = f"""
 請直接輸出純 HTML 程式碼，絕對不要在頭尾包裹 ```html 或 ``` 等任何 markdown 標籤。
 """
 
-# 4. 呼叫 gemini-3.6-flash 生成內容
-response = client.models.generate_content(
-    model="gemini-3.6-flash",
-    contents=prompt,
-)
+# 3. 呼叫模型並內建重試與備援機制
+models_to_try = ["gemini-2.5-flash", "gemini-2.5-pro"]
+response = None
 
-# 清理輸出並去除前後標籤
+for model_name in models_to_try:
+    for attempt in range(3):
+        try:
+            print(f"嘗試使用 {model_name} 生成內容 (第 {attempt + 1} 次)...")
+            response = client.models.generate_content(
+                model=model_name,
+                contents=prompt,
+            )
+            if response and response.text:
+                break
+        except ServerError as e:
+            print(f"遇到伺服器忙碌 (503)，等待 5 秒後重試: {e}")
+            time.sleep(5)
+        except Exception as e:
+            print(f"發生未預期錯誤: {e}")
+            break
+    if response and response.text:
+        break
+
+if not response or not response.text:
+    raise RuntimeError("所有模型嘗試皆失敗或處於過載狀態，請稍候重試。")
+
+# 4. 清理並輸出 index.html
 html_content = response.text.replace("```html", "").replace("```", "").strip()
 
-# 寫入 index.html
 with open("index.html", "w", encoding="utf-8") as f:
     f.write(html_content)
 

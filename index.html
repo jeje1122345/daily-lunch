@@ -3,726 +3,560 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>公司餐點分析網 - 今日午餐元氣速報</title>
+    <title>公司餐點分析網 - 日系明亮元氣食通信 (2026/09/25)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #fffdfa;
-            --primary-orange: #ff7e36;
-            --secondary-orange: #ffa868;
-            --accent-yellow: #ffd166;
-            --accent-red: #ff5964;
-            --accent-green: #06d6a0;
-            --accent-blue: #118ab2;
-            --text-dark: #2b2d42;
-            --text-muted: #6c757d;
+            --bg-main: #fffdfa;
+            --primary-orange: #ff6b35;
+            --primary-yellow: #f7c548;
+            --accent-red: #ff4757;
+            --accent-green: #2ed573;
+            --text-dark: #2f3542;
+            --text-muted: #747d8c;
             --card-bg: #ffffff;
-            --border-color: #f3ece1;
-            --shadow-soft: 0 8px 24px rgba(255, 126, 54, 0.08);
-            --shadow-hover: 0 12px 32px rgba(255, 126, 54, 0.15);
+            --border-color: #ffeaa7;
+            --butler-bg: #fff9e6;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            font-family: 'M PLUS Rounded 1c', 'Noto Sans TC', sans-serif;
         }
 
         body {
-            background-color: var(--bg-color);
-            font-family: 'M PLUS Rounded 1c', 'Noto Sans TC', sans-serif;
+            background-color: var(--bg-main);
             color: var(--text-dark);
-            line-height: 1.6;
+            background-image: radial-gradient(#ffd1a4 0.75px, transparent 0.75px);
+            background-size: 16px 16px;
             padding-bottom: 60px;
         }
 
-        /* Banner Header */
-        .hero-banner {
-            background: linear-gradient(135deg, #ff7e36 0%, #ff9f43 50%, #ffa868 100%);
-            color: #ffffff;
-            padding: 40px 20px 50px 20px;
-            text-align: center;
-            position: relative;
-            border-bottom-left-radius: 36px;
-            border-bottom-right-radius: 36px;
-            box-shadow: 0 10px 25px rgba(255, 126, 54, 0.2);
-        }
-
-        .hero-banner::after {
-            content: "🍱 每日美味追蹤";
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #ffffff;
-            color: var(--primary-orange);
-            font-weight: 800;
-            padding: 6px 20px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            border: 2px solid #ffe5d9;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-
-        .date-badge {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(4px);
-            padding: 4px 16px;
-            border-radius: 50px;
-            font-size: 0.95rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            margin-bottom: 12px;
-        }
-
-        .main-title {
-            font-size: 2.2rem;
-            font-weight: 900;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .sub-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #fff3e6;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        /* Container */
         .container {
             max-width: 900px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 16px;
         }
 
-        /* Dashboard Section */
-        .dashboard-section {
-            margin-top: 35px;
-            margin-bottom: 35px;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 16px;
+        /* Banner Style */
+        .hero-banner {
+            background: linear-gradient(135deg, #ff9e2c 0%, #ff5e36 100%);
+            color: #ffffff;
+            padding: 32px 20px 28px;
+            border-radius: 0 0 24px 24px;
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.25);
             margin-bottom: 24px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .stat-card {
+        .hero-banner::before {
+            content: "LUNCH TIME";
+            position: absolute;
+            right: -10px;
+            bottom: -10px;
+            font-size: 4rem;
+            font-weight: 800;
+            opacity: 0.15;
+            color: #fff;
+            letter-spacing: 2px;
+            white-space: nowrap;
+        }
+
+        .date-tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(4px);
+            padding: 4px 14px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-title {
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 6px;
+            text-shadow: 1px 2px 0px rgba(0,0,0,0.1);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            font-weight: 700;
+            background-color: #ffffff;
+            color: var(--primary-orange);
+            display: inline-block;
+            padding: 2px 12px;
+            border-radius: 12px;
+            box-shadow: 2px 2px 0px rgba(0,0,0,0.08);
+        }
+
+        /* Dashboard Metrics */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .metric-card {
             background: var(--card-bg);
-            border: 2px dashed #f0e6d8;
-            border-radius: 20px;
-            padding: 18px 15px;
+            border: 2px solid var(--border-color);
+            border-radius: 16px;
+            padding: 12px 8px;
             text-align: center;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-soft);
+            box-shadow: 0 4px 12px rgba(255, 165, 2px, 0.08);
+            position: relative;
         }
 
-        .stat-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--secondary-orange);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .stat-icon {
-            font-size: 1.8rem;
+        .metric-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 700;
             margin-bottom: 4px;
         }
 
-        .stat-label {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            font-weight: 700;
-        }
-
-        .stat-value {
-            font-size: 1.6rem;
-            font-weight: 900;
+        .metric-value {
+            font-size: 1.4rem;
+            font-weight: 800;
             color: var(--primary-orange);
-            margin-top: 2px;
         }
 
-        .stat-unit {
-            font-size: 0.9rem;
-            font-weight: 700;
+        .metric-unit {
+            font-size: 0.75rem;
             color: var(--text-dark);
+            font-weight: 500;
         }
 
         /* Butler Memo */
         .butler-memo {
-            background: #fffdf0;
-            border: 2px solid #ffeaa7;
-            border-radius: 20px;
-            padding: 20px 24px;
+            background-color: var(--butler-bg);
+            border: 2px dashed #f39c12;
+            border-radius: 18px;
+            padding: 16px 20px;
+            margin-bottom: 28px;
             position: relative;
-            box-shadow: 0 6px 16px rgba(255, 209, 102, 0.15);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
         }
 
         .butler-header {
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 10px;
-            border-bottom: 2px stroke #fceabb;
-            padding-bottom: 8px;
-        }
-
-        .butler-avatar {
-            width: 38px;
-            height: 38px;
-            background: #ffe066;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-        }
-
-        .butler-title {
+            gap: 8px;
             font-weight: 800;
-            color: #d48806;
-            font-size: 1.1rem;
+            color: #d35400;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
         }
 
         .butler-content {
-            font-size: 0.98rem;
-            color: #5c4d32;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #4a4a4a;
             font-weight: 500;
-            line-height: 1.7;
         }
 
         /* Section Title */
         .section-header {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            margin-bottom: 20px;
-            padding-left: 8px;
-            border-left: 6px solid var(--primary-orange);
-        }
-
-        .section-title {
-            font-size: 1.4rem;
+            gap: 8px;
+            font-size: 1.3rem;
             font-weight: 800;
+            margin-bottom: 16px;
             color: var(--text-dark);
         }
 
-        /* Meal Cards */
-        .meal-list {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
+        .section-header::before {
+            content: "";
+            display: inline-block;
+            width: 8px;
+            height: 22px;
+            background-color: var(--primary-orange);
+            border-radius: 4px;
         }
 
-        .meal-card {
+        /* Food Card */
+        .food-card {
             background: var(--card-bg);
-            border-radius: 24px;
-            border: 2px solid var(--border-color);
+            border: 2px solid #f1f2f6;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: var(--shadow-soft);
-            transition: all 0.3s ease;
-            position: relative;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .meal-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-            border-color: #ffd8be;
+        .food-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(255, 107, 53, 0.12);
+            border-color: #ffe0b2;
         }
 
-        .meal-card-main {
+        .card-main {
             display: flex;
-            flex-direction: column;
-            padding: 20px;
-            gap: 20px;
+            padding: 16px;
+            gap: 16px;
         }
 
-        @media (min-width: 640px) {
-            .meal-card-main {
-                flex-direction: row;
-                align-items: center;
-            }
-        }
-
-        .meal-img-wrapper {
+        .card-img-wrapper {
             position: relative;
-            width: 100%;
-            height: 200px;
-            border-radius: 16px;
-            overflow: hidden;
+            width: 140px;
+            height: 140px;
             flex-shrink: 0;
-            background-color: #f7f3ed;
+            border-radius: 14px;
+            overflow: hidden;
+            background-color: #f7f1e3;
         }
 
-        @media (min-width: 640px) {
-            .meal-img-wrapper {
-                width: 220px;
-                height: 165px;
-            }
-        }
-
-        .meal-img {
+        .card-img-wrapper img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .meal-card:hover .meal-img {
-            transform: scale(1.06);
         }
 
         .rank-badge {
             position: absolute;
-            top: 10px;
-            left: 10px;
+            top: 6px;
+            left: 6px;
             background: var(--primary-orange);
-            color: white;
+            color: #fff;
             font-weight: 800;
-            font-size: 0.85rem;
-            padding: 4px 12px;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-            z-index: 2;
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
-        .rank-1 { background: linear-gradient(45deg, #ff4757, #ff6b81); }
-        .rank-2 { background: linear-gradient(45deg, #ffa502, #ff7f50); }
-        .rank-3 { background: linear-gradient(45deg, #2ed573, #1e90ff); }
-
-        .meal-info {
+        .card-info {
             flex-grow: 1;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
-        .meal-header {
+        .food-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 8px;
-            gap: 10px;
+            gap: 8px;
         }
 
-        .meal-name {
-            font-size: 1.25rem;
+        .food-title {
+            font-size: 1.15rem;
             font-weight: 800;
             color: var(--text-dark);
             line-height: 1.3;
         }
 
-        .meal-price-stall {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 12px;
-        }
-
-        .stall-tag {
-            background-color: #f0f3f8;
-            color: #4a5568;
-            font-size: 0.8rem;
-            font-weight: 700;
-            padding: 3px 10px;
-            border-radius: 8px;
+        .stall-info {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+            font-weight: 500;
         }
 
         .price-tag {
-            color: var(--primary-orange);
+            font-size: 1.2rem;
             font-weight: 800;
-            font-size: 1.1rem;
+            color: var(--primary-orange);
+            white-space: nowrap;
         }
 
         .rating-box {
             display: flex;
             align-items: center;
             gap: 4px;
-            background: #fff8e7;
-            padding: 4px 10px;
-            border-radius: 10px;
-            border: 1px solid #ffe399;
-            flex-shrink: 0;
-        }
-
-        .rating-star {
-            color: #ffb703;
-            font-size: 1rem;
-        }
-
-        .rating-score {
-            font-weight: 800;
-            color: #d48806;
+            margin: 6px 0;
+            font-weight: 700;
             font-size: 0.95rem;
+            color: #ff9f1a;
         }
 
-        /* Chips Grid */
+        /* Chips */
         .chips-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 8px;
-            margin-top: 10px;
-        }
-
-        @media (min-width: 480px) {
-            .chips-container {
-                grid-template-columns: repeat(4, 1fr);
-            }
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
         }
 
         .chip {
-            background-color: #fbf7f0;
-            border: 1px solid #eee4d4;
-            padding: 6px 10px;
-            border-radius: 10px;
-            font-size: 0.8rem;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .chip-label {
-            color: var(--text-muted);
-            font-size: 0.7rem;
+            font-size: 0.75rem;
+            padding: 3px 10px;
+            border-radius: 20px;
             font-weight: 700;
-            margin-bottom: 2px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
         }
 
-        .chip-val {
-            font-weight: 800;
-            color: var(--text-dark);
-        }
+        .chip-meat { background: #ffeaa7; color: #d63031; }
+        .chip-cal { background: #e3f2fd; color: #0984e3; }
+        .chip-protein { background: #e8f5e9; color: #2ed573; }
+        .chip-satiety { background: #f3e5f5; color: #8e44ad; }
 
-        /* Butler Theater Bottom Bar */
-        .butler-theater {
-            background-color: #fff9f2;
-            border-top: 1px dashed #f5e3d0;
-            padding: 12px 20px;
-            font-size: 0.88rem;
-            color: #7a5c43;
+        /* Butler Mini Theater */
+        .butler-quote {
+            background-color: #fafafa;
+            border-top: 1px dashed #e0e0e0;
+            padding: 10px 16px;
+            font-size: 0.85rem;
+            color: #57606f;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
-        .theater-tag {
-            background: #ff7e36;
-            color: #ffffff;
-            font-size: 0.75rem;
-            font-weight: 800;
-            padding: 2px 8px;
-            border-radius: 6px;
+        .butler-quote-tag {
+            background: #2f3542;
+            color: #fff;
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 4px;
             white-space: nowrap;
-            flex-shrink: 0;
-        }
-
-        .theater-text {
-            font-weight: 500;
-            font-style: italic;
+            font-weight: 700;
         }
 
         /* Footer */
         .footer {
-            margin-top: 50px;
+            margin-top: 40px;
             text-align: center;
-            padding: 0 20px;
+            padding: 20px 10px;
         }
 
         .album-btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            background: linear-gradient(135deg, #2b2d42 0%, #4a4e69 100%);
-            color: #ffffff;
+            gap: 8px;
+            background: linear-gradient(135deg, #2ed573 0%, #26af5f 100%);
+            color: white;
             text-decoration: none;
-            padding: 14px 32px;
+            padding: 12px 28px;
             border-radius: 50px;
             font-weight: 800;
             font-size: 1rem;
-            box-shadow: 0 6px 18px rgba(43, 45, 66, 0.25);
-            transition: all 0.3s ease;
-            margin-bottom: 35px;
+            box-shadow: 0 6px 16px rgba(46, 213, 115, 0.3);
+            transition: all 0.2s ease;
+            margin-bottom: 24px;
         }
 
         .album-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 22px rgba(43, 45, 66, 0.35);
-            background: linear-gradient(135deg, #ff7e36 0%, #ff9f43 100%);
+            transform: scale(1.03);
+            box-shadow: 0 8px 20px rgba(46, 213, 115, 0.4);
         }
 
-        .copyright-text {
-            font-size: 0.78rem;
-            color: #8d99ae;
+        .copyright {
+            font-size: 0.75rem;
+            color: var(--text-muted);
             line-height: 1.6;
-            max-width: 750px;
+            max-width: 650px;
             margin: 0 auto;
-            border-top: 1px solid #eae3d9;
-            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            padding-top: 16px;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 600px) {
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .card-main {
+                flex-direction: column;
+            }
+            .card-img-wrapper {
+                width: 100%;
+                height: 180px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Banner -->
-    <header class="hero-banner">
-        <div class="date-badge">📅 2026 / 09 / 24 (木曜日)</div>
-        <h1 class="main-title">公司餐點分析網</h1>
-        <div class="sub-title">
-            <span>✨</span> 今天也要好好吃飯！ <span>✨</span>
-        </div>
-    </header>
-
     <div class="container">
-        <!-- Dashboard Section -->
-        <section class="dashboard-section">
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-icon">🍱</div>
-                    <div class="stat-label">今日精選餐點</div>
-                    <div class="stat-value">4 <span class="stat-unit">款</span></div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon">👑</div>
-                    <div class="stat-label">最高推薦評分</div>
-                    <div class="stat-value">4.9 <span class="stat-unit">/ 5.0</span></div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon">⚡</div>
-                    <div class="stat-label">平均熱量估計</div>
-                    <div class="stat-value">655 <span class="stat-unit">kcal</span></div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon">🥩</div>
-                    <div class="stat-label">主餐肉品品項</div>
-                    <div class="stat-value">3 <span class="stat-unit">款</span></div>
-                </div>
-            </div>
+        <!-- 頂部橫幅 -->
+        <header class="hero-banner">
+            <div class="date-tag">📅 2026 / 09 / 25  （五）</div>
+            <h1 class="hero-title">公司餐點分析網</h1>
+            <div class="hero-subtitle">今天也要好好吃飯！🍱</div>
+        </header>
 
-            <!-- Butler Memo -->
-            <div class="butler-memo">
-                <div class="butler-header">
-                    <div class="butler-avatar">🤵</div>
-                    <div class="butler-title">執事今日暖心備忘錄</div>
-                </div>
-                <div class="butler-content">
-                    各位同仁午安！下午兩點的大型週報會議請務必保持清醒。今天特地為大家精選了高蛋白質與抗昏睡熱量配方，吃飽後請務必搭配一杯黑咖啡！若在聽簡報時頻頻點頭如稻草人，可能會被隔壁部門錄成 GIF 動圖作為年度回顧素材喔！
-                </div>
+        <!-- 數據指標看板 -->
+        <section class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-label">今日供應</div>
+                <div class="metric-value">4 <span class="metric-unit">款</span></div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">最高評分</div>
+                <div class="metric-value">4.9 <span class="metric-unit">★</span></div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">平均熱量</div>
+                <div class="metric-value">615 <span class="metric-unit">kcal</span></div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">肉品種類</div>
+                <div class="metric-value">3 <span class="metric-unit">種</span></div>
             </div>
         </section>
 
-        <!-- Main Content List -->
-        <section>
-            <div class="section-header">
-                <h2 class="section-title">今日午餐特報清單</h2>
+        <!-- 執事今日暖心備忘錄 -->
+        <section class="butler-memo">
+            <div class="butler-header">
+                <span>🎩 執事今日暖心備忘錄</span>
             </div>
-
-            <div class="meal-list">
-
-                <!-- Meal 1 -->
-                <article class="meal-card">
-                    <div class="meal-card-main">
-                        <div class="meal-img-wrapper">
-                            <span class="rank-badge rank-1">No.1 👑 首選</span>
-                            <img src="https://drive.google.com/thumbnail?id=1GVN7-sKNz6DsQppaIJNktHAdtMl5TpAc&sz=w400" alt="日式照燒嫩烤雞腿便當" class="meal-img" loading="lazy">
-                        </div>
-                        <div class="meal-info">
-                            <div>
-                                <div class="meal-header">
-                                    <h3 class="meal-name">日式照燒嫩烤雞腿便當</h3>
-                                    <div class="rating-box">
-                                        <span class="rating-star">★</span>
-                                        <span class="rating-score">4.9</span>
-                                    </div>
-                                </div>
-                                <div class="meal-price-stall">
-                                    <span class="stall-tag">🏠 櫻花食堂</span>
-                                    <span class="price-tag">$120</span>
-                                </div>
-                            </div>
-                            <div class="chips-container">
-                                <div class="chip">
-                                    <span class="chip-label">🍖 肉品標籤</span>
-                                    <span class="chip-val">國產去骨雞腿</span>
-                                </div>
-                                <div class="chip">
-                                    <span class="chip-label">⚡ 估算熱量</span>
-                                    <span class="chip-val">650 kcal</span>
-                                </div>
-                                <div class="chip">
-                                    <span class="chip-label">🥩 蛋白質</span>
-                                    <span class="chip-val">38 g</span>
-                                </div>
-                                <div class="chip">
-                                    <span class="chip-label">🍱 飽足感</span>
-                                    <span class="chip-val">★★★★★</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="butler-theater">
-                        <span class="theater-tag">執事涼話</span>
-                        <span class="theater-text">「照燒醬汁甜而不膩、雞腿多汁，雖然非常美味，但請注意別把白飯舔得比洗碗機還乾淨，隔壁同仁正在看著你。」</span>
-                    </div>
-                </article>
-
-                <!-- Meal 2 -->
-                <article class="meal-card">
-                    <div class="meal-card-main">
-                        <div class="meal-img-wrapper">
-                            <span class="rank-badge rank-2">No.2 🥈 熱銷</span>
-                            <img src="https://drive.google.com/thumbnail?id=1BziUI-L8n9x_MockDriveID2&sz=w400" alt="台式古早味香酥排骨飯" class="meal-img" loading="lazy">
-                        </div>
-                        <div class="meal-info">
-                            <div>
-                                <div class="meal-header">
-                                    <h3 class="meal-name">台式古早味香酥排骨飯</h3>
-                                    <div class="rating-box">
-                                        <span class="rating-star">★</span>
-                                        <span class="rating-score">4.7</span>
-                                    </div>
-                                </div>
-                                <div class="meal-price-stall">
-                                    <span class="stall-tag">🏠 忠孝老店便當</span>
-                                    <span class="price-tag">$110</span>
-                                </div>
-                            </div>
-                            <div class="chips-container">
-                                <div class="chip">
-                                    <span class="chip-label">🍖 肉品標籤</span>
-                                    <span class="chip-val">溫體厚切豬排</span>
-                                </div>
-                                <div class="chip">
-                                    <span class="chip-label">⚡ 估算熱量</span>
-                                    <span class="chip-val">780 kcal</span>
-                                </div>
-                                <div class="chip">
-                                    <span class="chip-label">🥩 蛋白質</span>
-                                    <span class="chip-val">32 g</span>
-                                </div>
-                                <div class="chip">
-                                    <span class="chip-label">🍱 飽足感</span>
-                                    <span class="chip-val">★★★★★</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="butler-theater">
-                        <span class="theater-tag">執事涼話</span>
-                        <span class="theater-text">「厚切排骨油香四溢！下午熱量補滿補足，但如果 3 點開會開始打瞌睡，這塊炸排骨就是現成的罪證。」</span>
-                    </div>
-                </article>
-
-                <!-- Meal 3 -->
-                <article class="meal-card">
-                    <div class="meal-card-main">
-                        <div class="meal-img-wrapper">
-                            <span class="rank-badge rank-3">No.3 🥉 泰味</span>
-                            <img src="https://drive.google.com/thumbnail?id=1DziUI-L8n9x_MockDriveID4&sz=w400" alt="泰式酸辣羅勒打拋豬飯" class="meal-img" loading="lazy">
-                        </div>
-                        <div class="meal-info">
-                            <div>
-                                <div class="meal-header">
-                                    <h3 class="meal-name">泰式酸辣羅勒打拋豬飯</h3>
-                                    <div class="rating-box">
-                                        <span class="rating-star">★</span>
-                                        <span class="rating-score">4.6</span>
-                                    </div>
-                                </div>
-                                <div class="meal-price-stall">
-                                    <span class="stall-tag">🏠 暹羅小廚</span>
-                                    <span class="price-tag">$115</span>
-                                </div>
-                            </div>
-                            <div class="chips-container">
-                                <div class="chip">
-                                    <span class="chip-label">🍖 肉品標籤</span>
-                                    <span class="chip-val">台灣梅花豬肉末</span>
-                                </div>
-                                <div class="chip">
-                                    <span class="chip-label">⚡ 估算熱量</span>
-                                    <span class="chip-val">710 kcal</span>
-                                </div>
-                                <div class="chip">
-                                    <span class="chip-label">🥩 蛋白質</span>
-                                    <span class="chip-val">29 g</span>
-                                </div>
-                                <div class="chip">
-                                    <span class="chip-label">🍱 飽足感</span>
-                                    <span class="chip-val">★★★★☆</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="butler-theater">
-                        <span class="theater-tag">執事涼話</span>
-                        <span class="theater-text">「微辣十分開胃，能有效拯救昏昏欲睡的腦袋。記得準備好水壺，別在主管問話時辣到噴水。」</span>
-                    </div>
-                </article>
-
-                <!-- Meal 4 -->
-                <article class="meal-card">
-                    <div class="meal-card-main">
-                        <div class="meal-img-wrapper">
-                            <span class="rank-badge" style="background: #52b788;">No.4 🥗 輕食</span>
-                            <img src="https://drive.google.com/thumbnail?id=1CziUI-L8n9x_MockDriveID3&sz=w400" alt="鮮蝦蔬食藜麥溫沙拉" class="meal-img" loading="lazy">
-                        </div>
-                        <div class="meal-info">
-                            <div>
-                                <div class="meal-header">
-                                    <h3 class="meal-name">鮮蝦蔬食藜麥溫沙拉</h3>
-                                    <div class="rating-box">
-                                        <span class="rating-star">★</span>
-                                        <span class="rating-score">4.5</span>
-                                    </div>
-                                </div>
-                                <div class="meal-price-stall">
-                                    <span class="stall-tag">🏠 Green Light 輕食</span>
-                                    <span class="price-tag">$140</span>
-                                </div>
-                            </div>
-                            <div class="chips-container">
-                                <div class="chip">
-                                    <span class="chip-label">🍖 肉品標籤</span>
-                                    <span class="chip-val">無毒南美白蝦</span>
-                                </div>
-                                <div class="chip">
-                                    <span class="chip-label">⚡ 估算熱量</span>
-                                    <span class="chip-val">480 kcal</span>
-                                </div>
-                                <div class="chip">
-                                    <span class="chip-label">🥩 蛋白質</span>
-                                    <span class="chip-val">26 g</span>
-                                </div>
-                                <div class="chip">
-                                    <span class="chip-label">🍱 飽足感</span>
-                                    <span class="chip-val">★★★☆☆</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="butler-theater">
-                        <span class="theater-tag">執事涼話</span>
-                        <span class="theater-text">「選擇這道的同仁，想必是今天下午沒有扛 KPI 的壓力，或者是昨晚宵夜偷偷吃了大醬湯對吧？」</span>
-                    </div>
-                </article>
-
+            <div class="butler-content">
+                各位同仁辛苦了！下午兩點有跨國產品會報，請務必保持清醒。今日午餐澱粉與蛋白質供應充足，若吃飽後感到睡意襲來，請捏捏肚子的脂肪，那是您為公司辛勤奮鬥的勳章！提醒您，開會前記得多喝水提神，今天也要元氣滿滿地好好吃飯喔！
             </div>
         </section>
 
-        <!-- Footer -->
+        <!-- 今日餐點清單 -->
+        <main>
+            <div class="section-header">今日元氣餐點推薦</div>
+
+            <!-- Card 1 -->
+            <article class="food-card">
+                <div class="card-main">
+                    <div class="card-img-wrapper">
+                        <span class="rank-badge">NO.1 人氣王</span>
+                        <img src="https://drive.google.com/thumbnail?id=1GVN7-sKNz6DsQppaIJNktHAdtMl5TpAc&sz=w400" alt="特選日式照燒雞腿丼">
+                    </div>
+                    <div class="card-info">
+                        <div>
+                            <div class="food-header">
+                                <h2 class="food-title">特選日式照燒雞腿丼</h2>
+                                <span class="price-tag">$120</span>
+                            </div>
+                            <div class="stall-info">1號檔口 · 陽光和食</div>
+                            <div class="rating-box">
+                                ★★★★★ <span>4.9</span>
+                            </div>
+                        </div>
+                        <div class="chips-container">
+                            <span class="chip chip-meat">🍗 雞肉</span>
+                            <span class="chip chip-cal">⚡ 650 kcal</span>
+                            <span class="chip chip-protein">💪 38g 蛋白質</span>
+                            <span class="chip chip-satiety">🔋 飽足感：高</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="butler-quote">
+                    <span class="butler-quote-tag">執事涼話</span>
+                    <span>「老闆雞腿給得很大方，但下午開會千萬別跟著雞腿一起『照燒』昏沉沉睡過去囉。」</span>
+                </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="food-card">
+                <div class="card-main">
+                    <div class="card-img-wrapper">
+                        <span class="rank-badge" style="background:#48dbfb;">NO.2 強力推薦</span>
+                        <img src="https://drive.google.com/thumbnail?id=1GVN7-sKNz6DsQppaIJNktHAdtMl5TpAc&sz=w400" alt="蒜香黑椒牛小排便當">
+                    </div>
+                    <div class="card-info">
+                        <div>
+                            <div class="food-header">
+                                <h2 class="food-title">蒜香黑椒牛小排便當</h2>
+                                <span class="price-tag">$150</span>
+                            </div>
+                            <div class="stall-info">3號檔口 · 鐵板狂想</div>
+                            <div class="rating-box">
+                                ★★★★☆ <span>4.7</span>
+                            </div>
+                        </div>
+                        <div class="chips-container">
+                            <span class="chip chip-meat">🥩 牛肉</span>
+                            <span class="chip chip-cal">⚡ 780 kcal</span>
+                            <span class="chip chip-protein">💪 42g 蛋白質</span>
+                            <span class="chip chip-satiety">🔋 飽足感：極高</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="butler-quote">
+                    <span class="butler-quote-tag">執事涼話</span>
+                    <span>「蒜香味香到隔壁 PM 都看過來了，建議吃完去刷牙，除非你想用蒜氣征服客戶。」</span>
+                </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="food-card">
+                <div class="card-main">
+                    <div class="card-img-wrapper">
+                        <span class="rank-badge" style="background:#ff9f43;">NO.3 開味首選</span>
+                        <img src="https://drive.google.com/thumbnail?id=1GVN7-sKNz6DsQppaIJNktHAdtMl5TpAc&sz=w400" alt="韓式泡菜燉豬肉定食">
+                    </div>
+                    <div class="card-info">
+                        <div>
+                            <div class="food-header">
+                                <h2 class="food-title">韓式泡菜燉豬肉定食</h2>
+                                <span class="price-tag">$130</span>
+                            </div>
+                            <div class="stall-info">2號檔口 · 首爾小食堂</div>
+                            <div class="rating-box">
+                                ★★★★☆ <span>4.5</span>
+                            </div>
+                        </div>
+                        <div class="chips-container">
+                            <span class="chip chip-meat">🥓 豬肉</span>
+                            <span class="chip chip-cal">⚡ 620 kcal</span>
+                            <span class="chip chip-protein">💪 30g 蛋白質</span>
+                            <span class="chip chip-satiety">🔋 飽足感：中高</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="butler-quote">
+                    <span class="butler-quote-tag">執事涼話</span>
+                    <span>「酸辣開胃，非常適合壓制下午被主管改第 10 次需求時心中的無名火。」</span>
+                </div>
+            </article>
+
+            <!-- Card 4 -->
+            <article class="food-card">
+                <div class="card-main">
+                    <div class="card-img-wrapper">
+                        <span class="rank-badge" style="background:#1dd1a1;">NO.4 清爽輕食</span>
+                        <img src="https://drive.google.com/thumbnail?id=1GVN7-sKNz6DsQppaIJNktHAdtMl5TpAc&sz=w400" alt="彩蔬舒肥雞胸沙拉盒">
+                    </div>
+                    <div class="card-info">
+                        <div>
+                            <div class="food-header">
+                                <h2 class="food-title">彩蔬舒肥雞胸沙拉盒</h2>
+                                <span class="price-tag">$110</span>
+                            </div>
+                            <div class="stall-info">4號檔口 · 綠洲輕食</div>
+                            <div class="rating-box">
+                                ★★★★☆ <span>4.3</span>
+                            </div>
+                        </div>
+                        <div class="chips-container">
+                            <span class="chip chip-meat">🥗 雞肉/蔬食</span>
+                            <span class="chip chip-cal">⚡ 410 kcal</span>
+                            <span class="chip chip-protein">💪 35g 蛋白質</span>
+                            <span class="chip chip-satiety">🔋 飽足感：適中</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="butler-quote">
+                    <span class="butler-quote-tag">執事涼話</span>
+                    <span>「減脂期的救星！吃完會覺得自己超健康，但大概下午三點半就會開始想偷吃餅乾。」</span>
+                </div>
+            </article>
+        </main>
+
+        <!-- 頁尾宣告與連結 -->
         <footer class="footer">
-            <a href="https://drive.google.com" target="_blank" rel="noopener noreferrer" class="album-btn">
+            <a href="https://drive.google.com" target="_blank" class="album-btn">
                 📸 開啟雲端實拍相簿
             </a>
-            <div class="copyright-text">
+            <div class="copyright">
                 Designed & Provided by PB Studio · Bear Chang © 2026 PB Studio · Bear Chang. All Rights Reserved. 僅供個人／授權範圍內使用，禁止未經同意轉載、公開散布或商業使用。
             </div>
         </footer>
